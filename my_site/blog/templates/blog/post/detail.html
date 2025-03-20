@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-margin-top">
+    <h1>{{ post.title }}</h1>
+    <p class="date w3-text-grey">
+        Опубликовано {{ post.publish }} автором {{ post.author }}
+    </p>
+    <div class="w3-panel w3-light-grey w3-padding">
+        {{ post.body|linebreaks }}
+    </div>
+</div>
+{% endblock %}

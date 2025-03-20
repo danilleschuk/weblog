@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Добавьте комментарий{% endblock %}
+
+{% block content %}
+    <div class="w3-container w3-card-4 w3-light-grey w3-margin-top w3-round-xlarge">
+        {% if comment %}
+            <h2 class="w3-text-green">Ваш комментарий добавлен.</h2>
+            <p><a href="{{ post.get_absolute_url }}" class="w3-button w3-round-xlarge">Вернуться к посту</a></p>
+        {% else %}
+            <h2>Добавьте новый комментарий</h2>
+            {% include "blog/post/include/comment_form.html" %}
+        {% endif %}
+    </div>
+{% endblock %}

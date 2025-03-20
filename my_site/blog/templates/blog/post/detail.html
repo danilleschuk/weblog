@@ -13,5 +13,24 @@
     <div class="w3-panel w3-light-grey w3-padding">
         {{ post.body|linebreaks }}
     </div>
+     {% with comments.count as total_comments %}
+    <h2>
+        Количество комментариев: {{ total_comments }}
+    </h2>
+ {% endwith %}
+     {% for comment in comments %}
+    <div class="w3-container w3-card-2 w3-light-grey w3-margin-bottom">
+        <p class="info">
+            Комментарий {{ forloop.counter }} от {{ comment.name }} <br>
+            <span class="w3-text-grey">{{ comment.created }}</span>
+        </p>
+        <div class="w3-padding">
+            {{ comment.body|linebreaks }}
+        </div>
+    </div>
+    {% empty %}
+    <p>Пока здесь нет комментариев.</p>
+    {% endfor %}
+    {% include "blog/post/include/comment_form.html" %}
 </div>
 {% endblock %}
